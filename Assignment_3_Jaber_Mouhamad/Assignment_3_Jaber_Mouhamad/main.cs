@@ -27,11 +27,12 @@ namespace Assignment_3_Jaber_Mouhamad
         {
             InitializeComponent();
             ReadCSV();
+            PopulateGrid();
         
-            foreach(var s in rowResults)
-            {
-                Console.WriteLine("---------\n" + s.Ref_Date + "\n" + s.GEO + "\n" + s.EST + "\n" + s.Vector + "\n" + s.Coordinate + "\n" + s.Value + "\n" + s.Geography + "\n" + s.Area + "\n-------- ");
-            }
+            //foreach(var s in rowResults)
+            //{
+            //    Console.WriteLine("---------\n" + s.Ref_Date + "\n" + s.GEO + "\n" + s.EST + "\n" + s.Vector + "\n" + s.Coordinate + "\n" + s.Value + "\n" + s.Geography + "\n" + s.Area + "\n-------- ");
+            //}
 
            
         }//end of main
@@ -134,6 +135,23 @@ namespace Assignment_3_Jaber_Mouhamad
                }
             }
         }//end of ReadCSV
+
+        public void PopulateGrid()
+        {
+            metroGrid1.ColumnCount = 6;
+            metroGrid1.Columns[0].Name = ColNames.Columns[0];
+            metroGrid1.Columns[1].Name = ColNames.Columns[1];
+            metroGrid1.Columns[2].Name = ColNames.Columns[2];
+            metroGrid1.Columns[3].Name = ColNames.Columns[3];
+            metroGrid1.Columns[4].Name = ColNames.Columns[4];
+            metroGrid1.Columns[5].Name = ColNames.Columns[5];
+
+            foreach(var row in rowResults)
+            {
+                metroGrid1.Rows.Add(row.Ref_Date, row.GEO, row.EST, row.Vector,row.Coordinate, row.Value);
+            }
+
+        }//end of populategrid
 
         public class ColNames
         {
