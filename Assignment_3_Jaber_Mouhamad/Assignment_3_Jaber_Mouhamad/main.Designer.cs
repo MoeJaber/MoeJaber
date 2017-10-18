@@ -50,7 +50,7 @@
             this.metroTabControl1.Location = new System.Drawing.Point(23, 54);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(1149, 336);
+            this.metroTabControl1.Size = new System.Drawing.Size(930, 336);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -78,7 +78,7 @@
             this.data_tab.HorizontalScrollbarSize = 10;
             this.data_tab.Location = new System.Drawing.Point(4, 38);
             this.data_tab.Name = "data_tab";
-            this.data_tab.Size = new System.Drawing.Size(1141, 294);
+            this.data_tab.Size = new System.Drawing.Size(922, 294);
             this.data_tab.TabIndex = 3;
             this.data_tab.Text = "Data";
             this.data_tab.VerticalScrollbar = true;
@@ -130,14 +130,14 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(1134, 290);
+            this.metroGrid1.Size = new System.Drawing.Size(915, 290);
             this.metroGrid1.TabIndex = 2;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1195, 439);
+            this.ClientSize = new System.Drawing.Size(989, 439);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "main";
             this.Text = "Main";

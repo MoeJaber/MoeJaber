@@ -40,8 +40,6 @@ namespace Assignment_3_Jaber_Mouhamad
         public void ReadCSV()
         {
             int numOfColumns = 6;
-            string loc = "";
-            string production = "";
 
             using (TextFieldParser parser = new TextFieldParser(@"C:\Users\Jaber.M.GDC\Downloads\00010014-eng\00010014-eng.csv"))
             {
@@ -62,89 +60,100 @@ namespace Assignment_3_Jaber_Mouhamad
                     string[] fields = parser.ReadFields();
 
                     string [] array = fields[4].Split(new char[] { '.' }).Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
-                    var geography = Convert.ToInt16(array[0]);
-                    var area = Convert.ToInt16(array[1]);                  
-
-                    switch (geography)
-                    #region                   
-                    {                
-                    case 1: //Canada
-                            loc = "Canada";
-                            break;
-                        case 2: //Newfoundland and Labrador
-                            loc = "Newfoundland and Labrador";
-                            break;
-                        case 3: //Prince Edward Island
-                            loc = "Prince Edward Island";
-                            break;
-                        case 4: //Nova Scotia
-                            loc = "Nova Scotia";
-                            break;
-                        case 5: //New Brunswick
-                            loc = "New Brunswick";
-                            break;
-                        case 6: //Quebec
-                            loc = "Quebec";
-                            break;
-                        case 7: //Ontario
-                            loc = "Ontario";
-                            break;
-                        case 8: //Manitoba
-                            loc = "Manitoba";
-                            break;
-                        case 9: //Saskatchewan
-                            loc = "Saskatchewan";
-                            break;
-                        case 10: //Alberta
-                            loc = "Alberta";
-                            break;
-                        case 11: //British Columbia
-                            loc = "British Columbia";
-                        break;
-#endregion
-                    }
-
-                    switch (area)
-                    #region                   
-                    {
-                        case 1: //Seeded area, potatoes (acres) 
-                            production = "Seeded area, potatoes (acres) ";
-                            break;
-                        case 2: //Average yield, potatoes (hundredweight per harvested acres)
-                            production = "Average yield, potatoes (hundredweight per harvested acres)";
-                            break;
-                        case 3: //Production, potatoes (hundredweight)
-                            production = "Production, potatoes (hundredweight)";
-                            break;
-                        case 4: //Average farm price, potatoes (dollars per hundredweight)                        
-                            production = "Average farm price, potatoes (dollars per hundredweight)";
-                            break;
-                        case 5: //Total farm value, potatoes (dollars)
-                            production = "Total farm value, potatoes (dollars)";
-                            break;
-                        case 6: //Harvested area, potatoes (acres)
-                            production = "Harvested area, potatoes (acres)";
-                            break;
-                        case 7: //Amount sold, consumed, seeded or fed to livestock, potatoes (hundredweight)
-                            production = "Amount sold, consumed, seeded or fed to livestock, potatoes (hundredweight)";
-                            break;                      
-                            #endregion
-                    }
-
-                    rowResults.Add(new DataFromCSV() { Ref_Date = fields[0], GEO = fields[1], EST = fields[2], Vector = fields[3], Coordinate = fields[4], Value = fields[5], Geography = loc, Area = production });
+                    var result = decrypt(array);  
+                    
+                    rowResults.Add(new DataFromCSV() { Ref_Date = fields[0], GEO = fields[1], EST = fields[2], Vector = fields[3], Coordinate = fields[4], Value = fields[5], Geography = result.Item1, Area = result.Item2 });
                }
             }
         }//end of ReadCSV
 
+        public Tuple<string, string> decrypt(string[] x)
+        {
+            string loc = "";
+            string production = "";
+            var geography = Convert.ToInt16(x[0]);
+            var area = Convert.ToInt16(x[1]);
+
+            switch (geography)
+            #region                   
+            {
+                case 1: //Canada
+                    loc = "Canada";
+                    break;
+                case 2: //Newfoundland and Labrador
+                    loc = "Newfoundland and Labrador";
+                    break;
+                case 3: //Prince Edward Island
+                    loc = "Prince Edward Island";
+                    break;
+                case 4: //Nova Scotia
+                    loc = "Nova Scotia";
+                    break;
+                case 5: //New Brunswick
+                    loc = "New Brunswick";
+                    break;
+                case 6: //Quebec
+                    loc = "Quebec";
+                    break;
+                case 7: //Ontario
+                    loc = "Ontario";
+                    break;
+                case 8: //Manitoba
+                    loc = "Manitoba";
+                    break;
+                case 9: //Saskatchewan
+                    loc = "Saskatchewan";
+                    break;
+                case 10: //Alberta
+                    loc = "Alberta";
+                    break;
+                case 11: //British Columbia
+                    loc = "British Columbia";
+                    break;
+                    #endregion
+            }
+
+            switch (area)
+            #region                   
+            {
+                case 1: //Seeded area, potatoes (acres) 
+                    production = "Seeded area, potatoes (acres) ";
+                    break;
+                case 2: //Average yield, potatoes (hundredweight per harvested acres)
+                    production = "Average yield, potatoes (hundredweight per harvested acres)";
+                    break;
+                case 3: //Production, potatoes (hundredweight)
+                    production = "Production, potatoes (hundredweight)";
+                    break;
+                case 4: //Average farm price, potatoes (dollars per hundredweight)                        
+                    production = "Average farm price, potatoes (dollars per hundredweight)";
+                    break;
+                case 5: //Total farm value, potatoes (dollars)
+                    production = "Total farm value, potatoes (dollars)";
+                    break;
+                case 6: //Harvested area, potatoes (acres)
+                    production = "Harvested area, potatoes (acres)";
+                    break;
+                case 7: //Amount sold, consumed, seeded or fed to livestock, potatoes (hundredweight)
+                    production = "Amount sold, consumed, seeded or fed to livestock, potatoes (hundredweight)";
+                    break;
+                    #endregion
+            }
+
+            Tuple<string, string> info = new Tuple<string, string>(loc, production);
+            return info;
+        }
+
         public void PopulateGrid()
         {
             metroGrid1.ColumnCount = 6;
-            metroGrid1.Columns[0].Name = ColNames.Columns[0];
-            metroGrid1.Columns[1].Name = ColNames.Columns[1];
-            metroGrid1.Columns[2].Name = ColNames.Columns[2];
-            metroGrid1.Columns[3].Name = ColNames.Columns[3];
-            metroGrid1.Columns[4].Name = ColNames.Columns[4];
-            metroGrid1.Columns[5].Name = ColNames.Columns[5];
+            metroGrid1.Columns[0].HeaderText = ColNames.Columns[0];
+            metroGrid1.Columns[1].HeaderText = ColNames.Columns[1];
+            metroGrid1.Columns[2].HeaderText = ColNames.Columns[2];
+            metroGrid1.Columns[2].Width = 300;
+            metroGrid1.Columns[3].HeaderText = ColNames.Columns[3];
+            metroGrid1.Columns[4].HeaderText = ColNames.Columns[4];
+            metroGrid1.Columns[5].HeaderText = ColNames.Columns[5];
 
             foreach(var row in rowResults)
             {
