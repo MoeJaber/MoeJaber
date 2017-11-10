@@ -67,9 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Assignment_3_Jaber_Mouhamad\Assignment_3_Jaber_Mouhamad.csproj">
+    <ProjectReference Include="..\Assignment_3_Jaber_Mouhamad\Assignment_4_Jaber_Mouhamad.csproj">
       <Project>{086af902-b656-455f-afd1-11ade2c63c35}</Project>
-      <Name>Assignment_3_Jaber_Mouhamad</Name>
+      <Name>Assignment_4_Jaber_Mouhamad</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
